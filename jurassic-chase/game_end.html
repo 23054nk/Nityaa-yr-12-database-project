@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>game_end.html</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- stylesheets *******************************************-->
+<link rel="stylesheet" href="style.css">  
+
+<!-- intro page ***************************************-->
+
+
+</head>
+
+  
+<header>
+    <!--<h1 style="color:white;>
+        You Win!
+        
+    </h1>-->
+    <h2 style="color:black;" id="scoreText">Your final score is:</h2>
+    <h2 style="color:black;" id="timeText">Your time in secs:</h2>
+     <!--Getting the saved score from index.js and putting the score in the header with the id "scoreText"-->
+    <script>
+        let finalScore = localStorage.getItem("finalScore")
+        document.getElementById("scoreText").textContent = "Your final score is: " + finalScore;
+
+        let finalTime = localStorage.getItem("finalTime")
+        document.getElementById("timeText").textContent = "Your time in secs: " + finalTime;
+    </script>
+
+     <button onclick="location.href='index.html'">Play again</button>
+</header>
+
+  <!--js page *******************************************-->
+   <!--<script src="index.js"></script> -->
+  
+</body>
+</html>
