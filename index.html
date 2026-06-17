@@ -26,13 +26,7 @@
 <body>
 
 
-<button onclick="helloWorld()">Hello world</button> 
-<br>
-<br>
-<a href="jurassic-chase/index.html">Play Jurassic chase</a>
-<br>
-<br>
-<a href="geo-dash/index.html">Play Geo Dash</a>
+
 
 
   
@@ -42,22 +36,21 @@
 
   <script src="script.js"></script>
 
-
+ <button onclick="fb_popupLogin()">Login with Google</button>
+ 
     <form id="fruitForm">
-      <label for="name">Your Name:</label>
+      <label for="name">Your game name:</label>
       <input type="text" id="name" name="name" required />
 
-      <label for="age">Your Age:</label>
+      <label for="age">Your age:</label>
       <input type="number" id="age" name="age" required />
 
-      <label for="email">Your email:</label>
-      <input type="text" id="email" name="email" required />
-
+    
       <!-- add more fields here -->
     </form>
 
     <button onclick="writeForm()">Submit</button>
- <button onclick="fb_authenticate()">Login with Google</button>
+
 
     <p id="statusMessage"></p>
   </div>
