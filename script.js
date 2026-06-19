@@ -9,8 +9,15 @@ function writeForm(){
     firebase.database().ref('users/' + name).set({
       name: name,
       age: age,
-    })
 
+
+    })
+    
+console.log("hello your uid is" + GLOBAL_user.uid)
+
+console.log("hello your is" + GLOBAL_user.email)
+
+console.log("hello your name is" + GLOBAL_user.displayName)
 
 }
 var GLOBAL_user; // Google's user object
@@ -42,3 +49,6 @@ function fb_popupLogin() {
     console.log("User has logged in")
   });
 }
+
+/**/
+
