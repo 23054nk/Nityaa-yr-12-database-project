@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>highScoresPage</title>
+</head>
+<body>
+<h1>Highscores</h1>
+
+<body>
+    
+<script>
+function saveScore() {
+    const username = GLOBAL_user.displayName;
+    const score = window.finalScore; // replace with your real score variable
+
+    firebase.database().ref("JurrasicChase/" + username).set({
+        Score: score
+    });
+}
+</script>
+
+</body>
+</html>

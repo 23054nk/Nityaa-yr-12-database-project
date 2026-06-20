@@ -273,6 +273,7 @@ function endGame (message)
     text(`${message}`, width/3, height/3);
     localStorage.setItem("finalScore", score);
     localStorage.setItem("finalTime", gameTime.toFixed(2));
+
         // Pause for 2 seconds before redirecting
 
         if (finSprite.passed == true)
@@ -283,6 +284,6 @@ function endGame (message)
             setTimeout(() => {  window.location.href = "game_paused.html";    }, 2000);
         }
     
-
 }
+
 

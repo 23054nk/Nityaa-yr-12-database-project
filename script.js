@@ -5,24 +5,27 @@ function writeForm(){
     // Get the form data
     const name = document.getElementById("name").value;
     const age = document.getElementById("age").value;
+    const email = document.getElementById("email").value;
 
-    firebase.database().ref('users/' + name).set({
+    firebase.database().ref('userDetails/' + name).set({
       name: name,
       age: age,
-
+      email: email
 
     })
     
 console.log("hello your uid is" + GLOBAL_user.uid)
 
-console.log("hello your is" + GLOBAL_user.email)
+console.log("hello your email is" + GLOBAL_user.email)
 
 console.log("hello your name is" + GLOBAL_user.displayName)
+
+window.location.href = "chooseGame.html";
 
 }
 var GLOBAL_user; // Google's user object
 
-// set up a listener for the login state of the user.
+// set up a listener for the login state of the user.ss
 function fb_login() {
   firebase.auth().onAuthStateChanged(LOGIN_CALLBACK);
 }
@@ -50,5 +53,5 @@ function fb_popupLogin() {
   });
 }
 
-/**/
+
 
