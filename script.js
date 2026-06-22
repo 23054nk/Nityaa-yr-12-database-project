@@ -1,13 +1,13 @@
 
 console.log("Running database")
 
-function writeForm(){
+async function writeForm(){
     // Get the form data
     const name = document.getElementById("name").value;
     const age = document.getElementById("age").value;
     const email = document.getElementById("email").value;
 
-    firebase.database().ref('userDetails/' + name).set({
+    await firebase.database().ref('userDetails/' + name).set({
       name: name,
       age: age,
       email: email
@@ -19,6 +19,7 @@ console.log("hello your uid is" + GLOBAL_user.uid)
 console.log("hello your email is" + GLOBAL_user.email)
 
 console.log("hello your name is" + GLOBAL_user.displayName)
+alert("userdetails are saved");
 
 window.location.href = "chooseGame.html";
 
@@ -51,6 +52,19 @@ function fb_popupLogin() {
     GLOBAL_user = result.user; // save the user details object to a global variable
     console.log("User has logged in")
   });
+}
+
+function highScores(){
+    // Get the user score
+    const userScore = document.getElementById("userScore").value;
+    
+
+    firebase.database().ref('Jurassic Chase/' + userScore).set({
+      userScore: userScore
+
+    })
+    
+console.log("hello your score is" + GLOBAL_user.uid)
 }
 
 
