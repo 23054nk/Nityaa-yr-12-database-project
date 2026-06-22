@@ -4,39 +4,82 @@
   <title>game_end.html</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- stylesheets *******************************************-->
-<link rel="stylesheet" href="style.css">  
-
-<!-- intro page ***************************************-->
+  <link rel="stylesheet" href="style.css">
 
 
 </head>
 
-  
+<body>
+
+<!-- Firebase Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDe2jB6ftKFu7Vd3nk_YWguoME73ckwZks",
+    authDomain: "nityaa-yr12-database-project.firebaseapp.com",
+    databaseURL: "https://nityaa-yr12-database-project-default-rtdb.firebaseio.com",
+    projectId: "nityaa-yr12-database-project",
+    storageBucket: "nityaa-yr12-database-project.firebasestorage.app",
+    messagingSenderId: "720725804300",
+    appId: "1:720725804300:web:d2803469b2f43e1117b529",
+    measurementId: "G-R5HL76W79W"
+  };
+
+  // Initialize Firebase 
+  firebase.initializeApp(firebaseConfig);
+
+  // Declare global user variable 
+  let GLOBAL_user = null;
+</script>
+
 <header>
-    <!--<h1 style="color:white;>
-        You Win!
-        
-    </h1>-->
-    <h2 style="color:black;" id="scoreText">Your final score is:</h2>
-    <h2 style="color:black;" id="timeText">Your time in secs:</h2>
-     <!--Getting the saved score from index.js and putting the score in the header with the id "scoreText"-->
-    <script>
-        let finalScore = localStorage.getItem("finalScore")
-        document.getElementById("scoreText").textContent = "Your final score is: " + finalScore;
-
-        let finalTime = localStorage.getItem("finalTime")
-        document.getElementById("timeText").textContent = "Your time in secs: " + finalTime;
-    </script>
-
-     <button onclick="location.href='index.html'">Play again</button>
-     <button onclick="location.href='highScoresPage.html'">View Highscores</button>
+    <h2 id="scoreText">Your final score is:</h2>
+    <h2 id="timeText">Your time in secs:</h2>
 </header>
 
+<!-- This must appear BEFORE you set its textContent -->
+<p id="userScore" style="display:none;"></p>
 
-  <!--js page *******************************************-->
-   <!--<script src="index.js"></script> -->
-  
+<script>
+  // Load score + time from localStorage
+  let finalScore = localStorage.getItem("finalScore");
+  let finalTime = localStorage.getItem("finalTime");
+
+  document.getElementById("scoreText").textContent = "Your final score is: " + finalScore;
+  document.getElementById("timeText").textContent = "Your time in secs: " + finalTime;
+
+  document.getElementById("userScore").textContent = finalScore;
+
+  // Save score function
+  function saveScore() {
+      const userScore = document.getElementById("userScore").textContent;
+      // get stored game name
+      const username = localStorage.getItem("gameName");
+
+      firebase.database().ref("JurrasicChase/" + gameName).set({
+          Score: userScore
+      });
+
+      console.log("Saved score:", userScore);
+  }
+
+  //  Wait for login, THEN save score
+  firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+          GLOBAL_user = user;
+          saveScore();
+      } else {
+          console.log("User not logged in");
+      }
+  });
+</script>
+
+<button onclick="location.href='index.html'">Play again</button>
+<button onclick="location.href='highScoresPage.html'">View Highscores</button>
+
 </body>
 </html>
