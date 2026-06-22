@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-
+  <script src="script.js"></script>
 
 </head>
 
@@ -58,7 +58,7 @@
   function saveScore() {
       const userScore = document.getElementById("userScore").textContent;
       // get stored game name
-      const username = localStorage.getItem("gameName");
+      const gameName= localStorage.getItem("gameName");
 
       firebase.database().ref("JurrasicChase/" + gameName).set({
           Score: userScore
