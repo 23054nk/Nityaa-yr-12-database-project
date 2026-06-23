@@ -7,12 +7,9 @@ async function writeForm(){
     const age = document.getElementById("age").value;
     const email = document.getElementById("email").value;
 
-<<<<<<< HEAD
     // save user's game name (name they chose)
     localStorage.setItem("gameName", name);
 
-=======
->>>>>>> e2bf4f70e88cd765b2c7575d652920dc88225a24
     await firebase.database().ref('userDetails/' + name).set({
       name: name,
       age: age,
@@ -64,22 +61,8 @@ function fb_popupLogin() {
 
 function highScores(){
     // Get the user score
-<<<<<<< HEAD
     const userScore = document.getElementById("userScore").textContent;
     
-=======
-    const userScore = document.getElementById("userScore").value;
-    
-
-    firebase.database().ref('Jurassic Chase/' + userScore).set({
-      userScore: userScore
-
-    })
-    
-console.log("hello your score is" + GLOBAL_user.uid)
-}
-
->>>>>>> e2bf4f70e88cd765b2c7575d652920dc88225a24
 
     firebase.database().ref('JurassicChase/'+GLOBAL_user.displayName).set({
       Score: userScore
