@@ -7,9 +7,12 @@ async function writeForm(){
     const age = document.getElementById("age").value;
     const email = document.getElementById("email").value;
 
+<<<<<<< HEAD
     // save user's game name (name they chose)
     localStorage.setItem("gameName", name);
 
+=======
+>>>>>>> e2bf4f70e88cd765b2c7575d652920dc88225a24
     await firebase.database().ref('userDetails/' + name).set({
       name: name,
       age: age,
