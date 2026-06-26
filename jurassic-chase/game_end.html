@@ -54,18 +54,19 @@
 
   document.getElementById("userScore").textContent = finalScore;
 
-  // Save score function
-  function saveScore() {
-      const userScore = document.getElementById("userScore").textContent;
-      // get stored game name
-      const gameName= localStorage.getItem("gameName");
+  // Save score function 
 
-      firebase.database().ref("JurrasicChase/" + gameName).set({
-          Score: userScore
-      });
+function saveScore() {
+    const userScore = document.getElementById("userScore").textContent;
+    const gameName = localStorage.getItem("gameName");
 
-      console.log("Saved score:", userScore);
-  }
+    firebase.database().ref("JurrasicChase/" + gameName).set({
+        Score: userScore
+    });
+
+    console.log("Saved score:", userScore);
+}
+
 
   //  Wait for login, THEN save score
   firebase.auth().onAuthStateChanged(function(user) {
