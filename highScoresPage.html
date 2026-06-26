@@ -2,13 +2,71 @@
 <html>
 <head>
     <title>highScoresPage</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyDe2jB6ftKFu7Vd3nk_YWguoME73ckwZks",
+    authDomain: "nityaa-yr12-database-project.firebaseapp.com",
+    databaseURL: "https://nityaa-yr12-database-project-default-rtdb.firebaseio.com",
+    projectId: "nityaa-yr12-database-project",
+    storageBucket: "nityaa-yr12-database-project.firebasestorage.app",
+    messagingSenderId: "720725804300",
+    appId: "1:720725804300:web:d2803469b2f43e1117b529",
+    measurementId: "G-R5HL76W79W"
+    };
+    firebase.initializeApp(firebaseConfig);
+    </script>
+
+
 </head>
-<body>
-<h1>Highscores</h1>
+
 
 <body>
+    <h1>Highscores</h1>
+    <h2>Jurassic Chase</h2>
+    <div id="jurassicScores"></div>
+
+    <script>
+
+    firebase.database().ref("JurrasicChase").once("value", function(snapshot){
+
+    snapshot.forEach(function(childSnapshot){
+
+        let gameName = childSnapshot.key;
+        let score = childSnapshot.val().Score;
+
+        document.getElementById("jurassicScores").innerHTML +=
+            "<p>" + gameName + " got " + score + " points.</p>";
+
+    });
+
+    });
+    </script>
+
+    <h2>Geo Dash</h2>
+
+<div id="geoScores"></div>
+
+<script>
+
+firebase.database().ref("GeoDash").once("value", function(snapshot){
+
+    snapshot.forEach(function(childSnapshot){
+
+        let gameName = childSnapshot.key;
+        let score = childSnapshot.val().Score;
+
+        document.getElementById("geoScores").innerHTML +=
+            "<p>" + gameName + " got " + score + " points.</p>";
+
+    });
+
+});
+
+</script>
     
-
-
 </body>
 </html>

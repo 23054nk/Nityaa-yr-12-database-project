@@ -1,7 +1,7 @@
 body {
   background-color: #e0e6da;
   color:#41386B;
-  font-family: Arial, sans-serif;
+  font-family: 'Outfit', sans-serif;
   padding: 2rem;
   text-align: center;
 }
@@ -9,7 +9,7 @@ body {
 .container {
   max-width: 600px;
   margin: auto;
-  background-color:#cedac1;
+  background-color: #cedac1;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-  color: #404b36;
+  color:  #404b36;
   font-size: 1.2rem;
   margin-top: 0.2rem;
 }
@@ -59,3 +59,6 @@ button:hover {
   margin-top: 1rem;
   font-style: verdana;
 }
+
+
+

@@ -17,9 +17,18 @@ function endGame(_player, _obstacle){
     obstacles.removeAll();
     // Put your database writes here:
 
+    // saving scores and displaying in firebase
+    const gameName = localStorage.getItem("gameName");
+
+        firebase.database().ref("GeoDash/" + gameName).set({
+            Score: score
+        });
+
+        console.log("Geo Dash score saved!");
+    }
 
 
-}
+
 
 const SCREEN_WIDTH = 400;
 const SCREEN_HEIGHT = 200;
