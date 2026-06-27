@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="style.css">
     <title>highScoresPage</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -26,47 +27,57 @@
 
 <body>
     <h1>Highscores</h1>
-    <h2>Jurassic Chase</h2>
-    <div id="jurassicScores"></div>
+<br>
 
-    <script>
+    <div class="scoreContainer">
+    
+        <h2>Jurassic Chase</h2>
+        <div id="jurassicScores"></div>
 
-    firebase.database().ref("JurrasicChase").once("value", function(snapshot){
+        <script>
 
-    snapshot.forEach(function(childSnapshot){
+        firebase.database().ref("JurrasicChase").once("value", function(snapshot){
 
-        let gameName = childSnapshot.key;
-        let score = childSnapshot.val().Score;
+        snapshot.forEach(function(childSnapshot){
 
-        document.getElementById("jurassicScores").innerHTML +=
-            "<p>" + gameName + " got " + score + " points.</p>";
+            let gameName = childSnapshot.key;
+            let score = childSnapshot.val().Score;
 
-    });
+            document.getElementById("jurassicScores").innerHTML +=
+                "<p>" + gameName + " got " + score + " points</p>";
 
-    });
-    </script>
+        });
 
-    <h2>Geo Dash</h2>
+        });
+        </script>
+    </div>
+    <br>
+    <br>
 
-<div id="geoScores"></div>
+    <div class="scoreContainer">
 
-<script>
+        <h2>Geo Dash</h2>
 
-firebase.database().ref("GeoDash").once("value", function(snapshot){
+        <div id="geoScores"></div>
 
-    snapshot.forEach(function(childSnapshot){
+        <script>
 
-        let gameName = childSnapshot.key;
-        let score = childSnapshot.val().Score;
+        firebase.database().ref("GeoDash").once("value", function(snapshot){
 
-        document.getElementById("geoScores").innerHTML +=
-            "<p>" + gameName + " got " + score + " points.</p>";
+            snapshot.forEach(function(childSnapshot){
 
-    });
+                let gameName = childSnapshot.key;
+                let score = childSnapshot.val().Score;
 
-});
+                document.getElementById("geoScores").innerHTML +=
+                    "<p>" + gameName + " got " + score + " points</p>";
 
-</script>
+            });
+
+        });
+
+        </script>
+    </div>
     
 </body>
 </html>

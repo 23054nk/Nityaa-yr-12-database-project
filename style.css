@@ -1,5 +1,5 @@
 body {
-  background-color: #e0e6da;
+  background-color: #eaede6;
   color:#41386B;
   font-family: 'Outfit', sans-serif;
   padding: 2rem;
@@ -9,21 +9,49 @@ body {
 .container {
   max-width: 600px;
   margin: auto;
-  background-color: #cedac1;
+  background-color: whitesmoke;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  color: #758d5d;
-  font-size: 2.5rem;
-  margin-bottom: 0;
+.chooseGameContainer{
+  width: 50%;
+
+  margin: 25px auto;
+
+  background-color: whitesmoke;
+
+  padding: 20px 30px;
+
+  border-radius: 30px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.seeHighScores{
+  width: 50%;
+
+  margin: 25px auto;
+
+  background-color: whitesmoke;
+
+  padding: 20px 30px;
+
+  border-radius: 30px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6F8A5E;
 }
 
 h2 {
   color:  #404b36;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-top: 0.2rem;
 }
 

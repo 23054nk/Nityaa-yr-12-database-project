@@ -36,13 +36,21 @@
   let GLOBAL_user = null;
 </script>
 
+
 <header>
-    <h2 id="scoreText">Your final score is:</h2>
-    <h2 id="timeText">Your time in secs:</h2>
+
 </header>
+
 
 <!-- This must appear BEFORE you set its textContent -->
 <p id="userScore" style="display:none;"></p>
+
+ 
+    <h2 id="scoreText">Your final score is:</h2>
+    <h2 id="timeText">Your time in secs:</h2>
+    <button onclick="location.href='index.html'">Play again</button>
+    <button onclick="location.href='../chooseGame.html'">Back</button>
+
 
 <script>
   // Load score + time from localStorage
@@ -56,7 +64,7 @@
 
   // Save score function 
 
-function saveScore() {
+  function saveScore() {
     const userScore = document.getElementById("userScore").textContent;
     const gameName = localStorage.getItem("gameName");
 
@@ -65,7 +73,7 @@ function saveScore() {
     });
 
     console.log("Saved score:", userScore);
-}
+  }
 
 
   //  Wait for login, THEN save score
@@ -77,10 +85,8 @@ function saveScore() {
           console.log("User not logged in");
       }
   });
+
 </script>
-
-<button onclick="location.href='index.html'">Play again</button>
-
 
 </body>
 </html>
