@@ -9,7 +9,7 @@ body {
 .container {
   max-width: 600px;
   margin: auto;
-  background-color: whitesmoke;
+  background-color: white;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -30,6 +30,20 @@ body {
 }
 
 .seeHighScores{
+  width: 50%;
+
+  margin: 25px auto;
+
+  background-color: whitesmoke;
+
+  padding: 20px 30px;
+
+  border-radius: 30px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.scoreContainer{
   width: 50%;
 
   margin: 25px auto;

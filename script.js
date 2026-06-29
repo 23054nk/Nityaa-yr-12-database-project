@@ -7,7 +7,25 @@ async function writeForm(){
     const age = document.getElementById("age").value;
     const email = document.getElementById("email").value;
 
-    // save user's game name (name they chose)
+    // alert if the user has not filled out the form
+    if (!GLOBAL_user) {
+        alert("Please login with google first");
+        return;
+    }
+
+    // if the user does not fill out any of the fields 
+    if (name === "" || age === "" || email === "") {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    // if user is under the age of 1 and over the age of 100 the age is not valid 
+     if (age <= 0 || age > 100) {
+        alert("Please enter a valid age!");
+        return;
+    }
+
+    // save user's display name (name they chose)
     localStorage.setItem("gameName", name);
 
     await firebase.database().ref('userDetails/' + name).set({
