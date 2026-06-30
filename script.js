@@ -5,7 +5,8 @@ async function writeForm(){
     // Get the form data
     const name = document.getElementById("name").value;
     const age = document.getElementById("age").value;
-    const email = document.getElementById("email").value;
+    // getting email from when they sign into google 
+    const email = GLOBAL_user.email;
 
     // alert if the user has not filled out the form
     if (!GLOBAL_user) {
