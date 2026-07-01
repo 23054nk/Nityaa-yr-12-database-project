@@ -2,11 +2,6 @@
 console.log("Running database")
 
 async function writeForm(){
-    // Get the form data
-    const name = document.getElementById("name").value;
-    const age = document.getElementById("age").value;
-    // getting email from when they sign into google 
-    const email = GLOBAL_user.email;
 
     // alert if the user has not filled out the form
     if (!GLOBAL_user) {
@@ -14,8 +9,13 @@ async function writeForm(){
         return;
     }
 
+        // Get the form data
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const email = GLOBAL_user.email;
+
     // if the user does not fill out any of the fields 
-    if (name === "" || age === "" || email === "") {
+    if (name === "" || age === "") {
         alert("Please fill in all fields");
         return;
     }
