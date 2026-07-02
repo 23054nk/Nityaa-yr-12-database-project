@@ -1,9 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>chooseGame.html</title>
     <link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDe2jB6ftKFu7Vd3nk_YWguoME73ckwZks",
+  authDomain: "nityaa-yr12-database-project.firebaseapp.com",
+  databaseURL: "https://nityaa-yr12-database-project-default-rtdb.firebaseio.com",
+  projectId: "nityaa-yr12-database-project",
+  storageBucket: "nityaa-yr12-database-project.firebasestorage.app",
+  messagingSenderId: "720725804300",
+  appId: "1:720725804300:web:d2803469b2f43e1117b529",
+  measurementId: "G-R5HL76W79W"
+};
+
+firebase.initializeApp(firebaseConfig);
+</script>
 </head>
+
+<script>
+
+// saving the user's review to 
+function saveReview() {
+
+    const review = document.getElementById("review").value;
+
+    if (review.trim() === "") {
+        alert("Please write a review first.");
+        return;
+    }
+
+    firebase.database().ref("reviews").push({
+
+        name: localStorage.getItem("gameName"),
+        review: review
+
+    });
+
+    alert("Review submitted!");
+
+    document.getElementById("review").value = "";
+}
+</script>
+
+<script>
+// to display the reviews on the page
+firebase.database().ref("reviews").on("value", function(snapshot) {
+
+    document.getElementById("reviews").innerHTML = "";
+
+    snapshot.forEach(function(childSnapshot) {
+
+        let data = childSnapshot.val();
+
+        document.getElementById("reviews").innerHTML +=
+            "<p><b>" + data.name + ":</b> " + data.review + "</p>";
+
+    });
+
+});
+</script>
+
 <body>
 
 <div class="chooseGameContainer">
@@ -21,10 +85,8 @@
         
     </div>
 </div>
-<br>
-<br>
-<br>
-        <!-- reviews page-->
+
+<!-- reviews page-->
 <!-- Reviews -->
 <div class="reviews">
 
@@ -32,20 +94,16 @@
 
     <p>Tell us what you thought about the game you just played!</p>
 
-    <textarea
-        id="review"
-        placeholder="Write your review here..."
-        rows="5"
-    ></textarea>
-
-
+<div class="review-box">
+    <textarea id="review" placeholder="Write your review here..."></textarea>
     <button onclick="saveReview()">Submit Review</button>
-
-    <br><br>
+</div>
 
     <div id="reviews"></div>
 
 </div>
+
+
 
 <div class="seeHighScores">
     <h1>View Leaderboard</h1>

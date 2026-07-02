@@ -11,6 +11,12 @@ async function writeForm(){
 
         // Get the form data
     const name = document.getElementById("name").value;
+
+    // Check if the name is only spaces
+    if (name.trim() === "") {
+        alert("Your display name cannot contain only spaces.");
+        return;
+    }
     const age = document.getElementById("age").value;
     const email = GLOBAL_user.email;
 
