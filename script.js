@@ -47,7 +47,7 @@ console.log("hello your uid is" + GLOBAL_user.uid)
 console.log("hello your email is" + GLOBAL_user.email)
 
 console.log("hello your name is" + GLOBAL_user.displayName)
-alert("userdetails are saved");
+//alert("userdetails are saved");
 
 window.location.href = "chooseGame.html";
 
